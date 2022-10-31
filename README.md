@@ -1,34 +1,24 @@
-# [Docker Tim🍎 Machine](https://ms-jpq.github.io/docker-time-machine)
+# [Docker Time Machine Server](https://github.com/edgimar/docker-time-machine)
 
-Zero Configuration. Time machine for MacOS
+Zero Configuration Time machine server for MacOS
 
-Thank you Tim🍏, very cool.
 
-## Show me
+-
+## Environment Variables
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/msjpq/time-machine.svg)](https://hub.docker.com/r/msjpq/time-machine/)
+These variables are optional, but it is highly recommended to at least set
+the `SMB_PASSWORD` variable to something other than the default value.
 
-```sh
-docker run --net=host -v /my_folder/:/share msjpq/time-machine
-```
-
-- User: `dog`
-- Password : `dog`
-
-Why? Because I like dogs.
-
-## Fancy
-
-| Environmental Variables   | Description                            |
+| Variable and default val  | Description                            |
 | ------------------------- | --------------------                   |
-| `SMB_NAME='Time Machine'` | what you see from 💻                   |
-| `SMB_USER=dog`            | your login                             |
-| `SMB_PASSWORD=dog`        | your password                          |
+| `SMB_NAME='Time Machine'` | name of the server                     |
+| `SMB_USER=tm_user`        | username to log into the server with   |
+| `SMB_PASSWORD=secret`     | password to log into the server with   |
 | `SMB_MAX_SIZE_MB=0`       | max reported share size (0 = no limit) |
 | `PGID=0`                  | user gid (advanced)                    |
 | `PUID=0`                  | user uid (advanced)                    |
 
-## Docker Compose
+## Sample Docker Compose File
 
 ```yaml
 ---
@@ -36,7 +26,7 @@ version: "3.7"
 
 services:
   time_machine:
-    image: msjpq/time-machine
+    image: edgimar/time-machine
     container_name: time-machine
     restart: unless-stopped
     network_mode: host
@@ -44,8 +34,3 @@ services:
       - ./:/share
 ```
 
-## Very important
-
-Say hi to my dog!
-
-![my dog](https://raw.githubusercontent.com/ms-jpq/docker-time-machine/tim-apple/preview/dog.JPG)

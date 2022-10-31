@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/bin/bash
 
 set -eu
 set -o pipefail
@@ -6,7 +6,7 @@ set -o pipefail
 
 GROUP_NAME='time-machine-users'
 
-groupadd --non-unique --gid "$PGID" "$GROUP_NAME"
+groupadd --non-unique --gid "$PGID" "$GROUP_NAME" -f
 useradd --system --non-unique --gid "$GROUP_NAME" --uid "$PUID" "$SMB_USER"
 
 
