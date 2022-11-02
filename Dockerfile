@@ -1,20 +1,15 @@
 FROM ubuntu:latest
 
-RUN mkdir /_install
-
-ENTRYPOINT ["/init"]
-
-
 ## Dependencies
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y \
-    gettext-base samba avahi-daemon
-
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    gettext-base samba avahi-daemon supervisor
 
 ## Scripts
 COPY root /
+RUN mkdir -p /var/log/supervisor
 ENV PGID=0 \
     PUID=0 \
     SMB_NAME='Time Machine Server' \
@@ -23,8 +18,11 @@ ENV PGID=0 \
     SMB_MAX_SIZE_MB=0
 VOLUME ["/share"]
 
+RUN bash -c /etc/cont-init.d/00-envsubst.sh && bash -c /etc/cont-init.d/00-smb.sh
 
 ## Cleanup
-RUN apt autoremove -y && \
-    apt clean && \
-    rm -r /_install
+#RUN apt autoremove -y && \
+#    apt clean
+
+CMD ["/usr/bin/supervisord"]
+
