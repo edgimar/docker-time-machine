@@ -18,7 +18,7 @@ ENV PGID=0 \
     SMB_MAX_SIZE_MB=0
 VOLUME ["/share"]
 
-RUN bash -c /etc/cont-init.d/00-envsubst.sh && bash -c /etc/cont-init.d/00-smb.sh
+RUN /etc/cont-init.d/00-envsubst.sh && /etc/cont-init.d/00-smb.sh
 
 ## Cleanup
 #RUN apt autoremove -y && \
