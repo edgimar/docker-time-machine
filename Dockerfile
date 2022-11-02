@@ -18,11 +18,9 @@ ENV PGID=0 \
     SMB_MAX_SIZE_MB=0
 VOLUME ["/share"]
 
-RUN /etc/cont-init.d/00-envsubst.sh && /etc/cont-init.d/00-smb.sh
-
 ## Cleanup
 #RUN apt autoremove -y && \
 #    apt clean
 
 # this will include all conf files in /etc/supervisor/conf.d
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["/bin/sh", "entrypoint.sh"]
