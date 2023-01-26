@@ -35,6 +35,7 @@ services:
       - SMB_USER=tm_user        # username to log into the server with
       - SMB_PASSWORD=secret     # password to log into the server with
       - SMB_MAX_SIZE_MB=0       # max reported share size (0 = no limit)
+      - SMB_PORTS=445           # space-separated list of ports to listen on
     volumes:
       - /path/to/host/folder/for/storing/backup/data:/share
 ```

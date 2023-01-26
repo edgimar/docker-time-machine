@@ -15,7 +15,8 @@ ENV PGID=0 \
     SMB_NAME='Time Machine Server' \
     SMB_USER=tm_user \
     SMB_PASSWORD=secret \
-    SMB_MAX_SIZE_MB=0
+    SMB_MAX_SIZE_MB=0 \
+    SMB_PORTS=445
 VOLUME ["/share"]
 
 ## Cleanup

@@ -17,6 +17,7 @@
   log file = /var/log/samba/%m.log
   max log size = 1000
   max disk size = ${SMB_MAX_SIZE_MB}
+  smb ports = ${SMB_PORTS}
 
   # Special configuration for Apple's Time Machine
   fruit:model = MacPro
