@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
-    gettext-base samba avahi-daemon supervisor
+    gettext-base samba avahi-daemon supervisor vim-tiny
 
 ## Scripts
 COPY root /
